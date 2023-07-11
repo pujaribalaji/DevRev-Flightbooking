@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Search Results</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <h2>Flight Search Results</h2>
+
+  <% if (flights && flights.length > 0) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Flight Number</th>
+          <th>Departure</th>
+          <th>Destination</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Seats</th>
+          <th>Book</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (const flight of flights) { %>
+          <tr>
+            <td><%= flight.flightNumber %></td>
+            <td><%= flight.departure %></td>
+            <td><%= flight.destination %></td>
+            <td><%= flight.date.toDateString() %></td>
+            <td><%= flight.time %></td>
+            <td><%= flight.seats %></td>
+            <td>
+              <form action="/bookings/add" method="POST">
+                <input type="hidden" name="flightNumber" value="<%= flight.flightNumber %>">
+                <% if (flight.seats <= 0) { %> <!-- Check seat availability -->
+                  <button type="button" disabled>No Seats Available</button>
+                <% } else { %>
+                  <button type="submit" class="btn btn-primary">Book</button>
+                <% } %>
+              </form>
+            </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <p>No flights available for the selected criteria.</p>
+  <% } %>
+
+  <a href="/profile/mybookings">My BOOKINGS</a>
+
+</body>
+
+</html>

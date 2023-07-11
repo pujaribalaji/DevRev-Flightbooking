@@ -1,32 +1,17 @@
+<!-- mybookings.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile</title>
+  <title>My Bookings</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-  <h2>Welcome, <%= username %>!</h2>
-
-  <h3>Flight Search</h3>
-
-  <form action="/profile/flights/search" method="POST">
-    <label for="departure">Departure:</label>
-    <input type="text" name="departure" required>
-    <br>
-    <label for="destination">Destination:</label>
-    <input type="text" name="destination" required>
-    <br>
-    <label for="date">Date:</label>
-    <input type="date" name="date" required>
-    <br>
-    <input type="submit" value="Search">
-  </form>
-  
-  <h3>My Bookings</h3>
+  <h2>My Bookings</h2>
 
   <% if (bookings && bookings.length > 0) { %>
     <table>
@@ -35,6 +20,7 @@
           <th>Flight Number</th>
           <th>Time</th>
           <th>Seats</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -43,6 +29,13 @@
             <td><%= booking.flightNumber %></td>
             <td><%= booking.time %></td>
             <td><%= booking.seats %></td>
+            <td>
+              <form action="/bookings/delete" method="POST">
+                <input type="hidden" name="flightNumber" value="<%= booking.flightNumber %>">
+                <input type="hidden" name="time" value="<%= booking.time %>">
+                <button type="submit" class="btn btn-danger">Cancel</button>
+              </form>
+            </td>
           </tr>
         <% } %>
       </tbody>
@@ -50,12 +43,14 @@
   <% } else { %>
     <p>No bookings found.</p>
   <% } %>
-  
-  <a href="/profile/mybookings">My BOOKINGS</a>
 
-  <div>
-    <a href="/logout">Logout</a>
-  </div>
+  <% if (booking === 'success') { %>
+    <p>Booking added successfully!</p>
+  <% } %>
+
+  <br>
+  <br>
+  <a href="/profile">Back to Profile</a>
 
 </body>
 
