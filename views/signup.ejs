@@ -1,0 +1,62 @@
+<!-- signup.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Sign Up</h1>
+    <form action="/signup" method="POST" onsubmit="return validateForm()">
+      <div class="form-group">
+        <input type="text" name="username" class="form-control" placeholder="Username" required>
+        <small id="usernameError" class="form-text text-danger"></small>
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
+        <small id="passwordError" class="form-text text-danger"></small>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="/login">Login</a></p>
+  </div>
+
+  <script>
+    function validateForm() {
+      const usernameInput = document.querySelector('input[name="username"]');
+      const passwordInput = document.querySelector('input[name="password"]');
+      const usernameError = document.getElementById('usernameError');
+      const passwordError = document.getElementById('passwordError');
+
+      usernameError.textContent = '';
+      passwordError.textContent = '';
+
+      let isValid = true;
+
+      // Username validation
+      if (usernameInput.value.trim() === '') {
+        usernameError.textContent = 'Username is required';
+        isValid = false;
+      }
+
+      // Password validation
+      if (passwordInput.value.trim() === '') {
+        passwordError.textContent = 'Password is required';
+        isValid = false;
+      } else if (passwordInput.value.length < 6) {
+        passwordError.textContent = 'Password must be at least 6 characters long';
+        isValid = false;
+      }
+
+      return isValid;
+    }
+  </script>
+</body>
+
+</html>
