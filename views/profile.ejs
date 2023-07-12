@@ -9,22 +9,31 @@
 </head>
 
 <body>
-  <h2>Welcome, <%= username %>!</h2>
+  <div class="box-1">
+    <h1>flight</h1>
+    <button class="button-1"> <a href="/profile/mybookings">My BOOKINGS</a></button>
 
-  <h3>Flight Search</h3>
+  </div>
 
-  <form action="/profile/flights/search" method="POST">
-    <label for="departure">Departure:</label>
-    <input type="text" name="departure" required>
-    <br>
-    <label for="destination">Destination:</label>
-    <input type="text" name="destination" required>
-    <br>
-    <label for="date">Date:</label>
-    <input type="date" name="date" required>
-    <br>
-    <input type="submit" value="Search">
-  </form>
+  <div class="container-1">
+    <h2>Welcome, <%= username %>!</h2>
+
+    <h3>Flight Search</h3>
+  
+    <form action="/profile/flights/search" method="POST">
+      
+      <input class="input-2" type="text" placeholder="Departure" name="departure" required>
+      <img class="image-1" src="/images/WhatsApp Image 2023-07-12 at 10.44.31.jpg"/>
+  
+      <input class="input-2" type="text" placeholder="Destination" name="destination" required>
+      
+     
+      <input class="input-3" type="date" name="date" required>
+     
+      <input class="input-4" type="submit" value="Search">
+    </form>
+  </div>
+  
   
   
   <!-- <h3>My Bookings</h3>

@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 
 const app = express();
-const port = 3000;
+const port = 5000;
 
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://pujaribalaji152:Balaji152@cluster0.gdseb2f.mongodb.net/', {
