@@ -1,3 +1,5 @@
+<!-- flightsearch.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,8 +38,8 @@
             <td>
               <form action="/bookings/add" method="POST">
                 <input type="hidden" name="flightNumber" value="<%= flight.flightNumber %>">
-                <% if (flight.seats <= 0) { %> <!-- Check seat availability -->
-                  <button type="button" disabled>No Seats Available</button>
+                <% if (flight.booked) { %> <!-- Add this conditional statement -->
+                  <button type="button" disabled>Booked</button>
                 <% } else { %>
                   <button type="submit" class="btn btn-primary">Book</button>
                 <% } %>
@@ -52,6 +54,7 @@
   <% } %>
 
   <a href="/profile/mybookings">My BOOKINGS</a>
+  
 
 </body>
 
