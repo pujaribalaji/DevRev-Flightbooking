@@ -4,7 +4,6 @@
   "description": "This is backend project given by devrev",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm i",
     "start": "nodemon app.js"
   },
@@ -21,6 +20,7 @@
     "mongoose": "^7.3.2"
   },
   "devDependencies": {
+    "nodemon": "^3.0.1",
     "webpack-cli": "^5.1.4"
   }
 }
