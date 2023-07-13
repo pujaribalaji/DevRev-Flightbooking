@@ -6,18 +6,17 @@ const indexRoutes = require("./routes/index");
 const flightRoutes = require("./routes/flights");
 const bookingRoutes = require("./routes/bookings");
 const authRoutes = require("./routes/auth");
-const Flight = require("./models/flight");
-require("dotenv").config(); // Add this line to load environment variables
+require("dotenv").config();
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
-  // Use the MongoDB URI from environment variable
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
