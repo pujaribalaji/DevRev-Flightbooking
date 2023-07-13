@@ -2,18 +2,17 @@
 
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Bookings</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Bookings</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+  <body>
+    <h2>My Bookings</h2>
 
-<body>
-  <h2>My Bookings</h2>
-
-  <% if (bookings && bookings.length > 0) { %>
+    <% if (bookings && bookings.length > 0) { %>
     <table>
       <thead>
         <tr>
@@ -25,33 +24,31 @@
       </thead>
       <tbody>
         <% for (const booking of bookings) { %>
-          <tr>
-            <td><%= booking.flightNumber %></td>
-            <td><%= booking.time %></td>
-            <td><%= booking.seats %></td>
-            <td>
-              <form action="/bookings/delete" method="POST">
-                <input type="hidden" name="flightNumber" value="<%= booking.flightNumber %>">
-                <input type="hidden" name="time" value="<%= booking.time %>">
-                <button type="submit" class="btn btn-danger">Cancel</button>
-              </form>
-            </td>
-          </tr>
+        <tr>
+          <td><%= booking.flightNumber %></td>
+          <td><%= booking.time %></td>
+          <td><%= booking.seats %></td>
+          <td>
+            <form action="/bookings/delete" method="POST">
+              <input
+                type="hidden"
+                name="flightNumber"
+                value="<%= booking.flightNumber %>"
+              />
+              <input type="hidden" name="time" value="<%= booking.time %>" />
+              <button type="submit" class="btn btn-danger">Cancel</button>
+            </form>
+          </td>
+        </tr>
         <% } %>
       </tbody>
     </table>
-  <% } else { %>
+    <% } else { %>
     <p>No bookings found.</p>
-  <% } %>
+    <% } %>
 
-  <% if (booking === 'success') { %>
-    <p>Booking added successfully!</p>
-  <% } %>
-
-  <br>
-  <br>
-  <a href="/profile">Back to Profile</a>
-
-</body>
-
+    <br />
+    <br />
+    <a href="/profile" class="link">Back to Profile</a>
+  </body>
 </html>

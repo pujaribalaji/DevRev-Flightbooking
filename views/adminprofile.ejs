@@ -1,69 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="admin">
     <h1>Flights</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Flight Number</th>
-      <th>Departure</th>
-      <th>Destination</th>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Seats</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% for (const flight of flights) { %>
-      <tr>
-        <td><%= flight.flightNumber %></td>
-        <td><%= flight.departure %></td>
-        <td><%= flight.destination %></td>
-        <td><%= flight.date %></td>
-        <td><%= flight.time %></td>
-        <td><%= flight.seats %></td>
-        <td><a href="/flights/delete/<%= flight.flightNumber %>">Delete</a></td>
-      </tr>
-    <% } %>
-  </tbody>
-</table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Flight Number</th>
+          <th>Departure</th>
+          <th>Destination</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Seats</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (const flight of flights) { %>
+        <tr>
+          <td><%= flight.flightNumber %></td>
+          <td><%= flight.departure %></td>
+          <td><%= flight.destination %></td>
+          <td><%= flight.date %></td>
+          <td><%= flight.time %></td>
+          <td><%= flight.seats %></td>
+          <td>
+            <a class="link" href="/flights/delete/<%= flight.flightNumber %>"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
 
-<h2>Add Flight</h2>
+    <h2>Add Flight</h2>
 
-<form action="/flights/add" method="POST">
-  <div class="form-group">
-    <label for="flightNumber">Flight Number</label>
-    <input type="text" name="flightNumber" id="flightNumber" class="form-control" required>
-  </div>
-  <div class="form-group">
-    <label for="departure">Departure</label>
-    <input type="text" name="departure" id="departure" class="form-control" required>
-  </div>
-  <div class="form-group">
-    <label for="destination">Destination</label>
-    <input type="text" name="destination" id="destination" class="form-control" required>
-  </div>
-  <div class="form-group">
-    <label for="date">Date</label>
-    <input type="date" name="date" id="date" class="form-control" required>
-  </div>
-  <div class="form-group">
-    <label for="time">Time</label>
-    <input type="time" name="time" id="time" class="form-control" required>
-  </div>
-  <div class="form-group">
-    <label for="seats">Seats</label>
-    <input type="number" name="seats" id="seats" class="form-control" required>
-  </div>
-  <button type="submit" class="btn btn-primary">Add Flight</button>
-</form>
-<div > 
-    <a href="/logout"><button  class="logout">Logout</button></a>
-</div>
-</body>
+    <form action="/flights/add" method="POST">
+      <div class="form-group10">
+        <label for="flightNumber">Flight Number</label>
+        <input
+          type="text"
+          name="flightNumber"
+          id="flightNumber"
+          class="form-control"
+          required
+        />
+        <label for="departure">Departure</label>
+        <input
+          type="text"
+          name="departure"
+          id="departure"
+          class="form-control"
+          required
+        />
+        <label for="destination">Destination</label>
+        <input
+          type="text"
+          name="destination"
+          id="destination"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="form-group20">
+        <label for="date">Date</label>
+        <input
+          type="date"
+          name="date"
+          id="date"
+          class="form-control"
+          required
+        />
+
+        <label for="time">Time</label>
+        <input
+          type="time"
+          name="time"
+          id="time"
+          class="form-control"
+          required
+        />
+        <label for="seats">Seats</label>
+        <input
+          type="number"
+          name="seats"
+          id="seats"
+          class="form-control"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Add Flight</button>
+    </form>
+    <div class="logout1">
+      <a href="/logout"><button >Logout</button></a>
+    </div>
+  </body>
 </html>

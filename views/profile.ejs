@@ -1,72 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+  <body>
+    <div class="dabba">
 
-<body>
-  <div class="box-1">
-    <h1>flight</h1>
-    <button class="button-1"> <a href="/profile/mybookings">My BOOKINGS</a></button>
+      <div class="box-1">
+        <h1>GoFlights.</h1>
+        <div>
+          <button class="bt1">
+            <a href="/profile/mybookings">My BOOKINGS</a>
+          </button>
 
-  </div>
+          <button class="bt1"><a href="/logout" class="bt1">Logout</a></button>
+        </div>
+      </div>
 
-  <div class="container-1">
-    <h2>Welcome, <%= username %>!</h2>
+      <div class="welcome">
+        <h2>Welcome, <%= username %>!</h2>
 
-    <h3>Flight Search</h3>
+        <h3>Flight Search</h3>
+      </div>
+        <form action="/flights/search" method="POST" class="flightf">
+          <input
+            class="flightbox"
+            type="text"
+            placeholder="Departure"
+            name="departure"
+            required
+          />
+          <img
+            class="image-1"
+            src="/images/WhatsApp Image 2023-07-12 at 10.44.31.jpg"
+          />
+
+          <input
+            class="flightbox"
+            type="text"
+            placeholder="Destination"
+            name="destination"
+            required
+          />
+
+          <input class="input-3" type="date" name="date" required />
+
+          <input class="input-4" type="submit" value="Search" />
+        </form>
+
+      <!-- <h3>My Bookings</h3>
   
-    <form action="/profile/flights/search" method="POST">
-      
-      <input class="input-2" type="text" placeholder="Departure" name="departure" required>
-      <img class="image-1" src="/images/WhatsApp Image 2023-07-12 at 10.44.31.jpg"/>
-  
-      <input class="input-2" type="text" placeholder="Destination" name="destination" required>
-      
-     
-      <input class="input-3" type="date" name="date" required>
-     
-      <input class="input-4" type="submit" value="Search">
-    </form>
-  </div>
-  
-  
-  
-  <!-- <h3>My Bookings</h3>
-
-  <% if (bookings && bookings.length > 0) { %>
-    <table>
-      <thead>
-        <tr>
-          <th>Flight Number</th>
-          <th>Time</th>
-          <th>Seats</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% for (const booking of bookings) { %>
+    <% if (bookings && bookings.length > 0) { %>
+      <table>
+        <thead>
           <tr>
-            <td><%= booking.flightNumber %></td>
-            <td><%= booking.time %></td>
-            <td><%= booking.seats %></td>
+            <th>Flight Number</th>
+            <th>Time</th>
+            <th>Seats</th>
           </tr>
-        <% } %>
-      </tbody>
-    </table>
-  <% } else { %>
-    <p>No bookings found.</p>
-  <% } %> -->
-  
-  <a href="/profile/mybookings">My BOOKINGS</a>
-
-  <div>
-    <a href="/logout">Logout</a>
-  </div>
-
-</body>
-
+        </thead>
+        <tbody>
+          <% for (const booking of bookings) { %>
+            <tr>
+              <td><%= booking.flightNumber %></td>
+              <td><%= booking.time %></td>
+              <td><%= booking.seats %></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p>No bookings found.</p>
+    <% } %> -->
+    </div>
+    </div>
+  </body>
 </html>

@@ -2,60 +2,92 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Flight Search Results</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".book-flight-form").submit(function (event) {
+        event.preventDefault(); // Prevent the form from submitting normally
 
+        var form = $(this);
+        var submitButton = form.find(".book-flight-button");
+        var originalButtonText = submitButton.text();
+
+        submitButton.prop("disabled", true).text("Please wait...");
+
+        // Make an AJAX request to submit the form
+        $.ajax({
+          type: form.attr("method"),
+          url: form.attr("action"),
+          data: form.serialize(),
+          success: function (response) {
+            if (response.success) {
+              // Booked successfully
+              alert("Booked successfully!");
+              window.location.href = "/profile/mybookings";
+            } else {
+              // Failed to book
+              alert(response.message);
+            }
+          },
+          error: function () {
+            alert("An error occurred while processing your request.");
+          },
+          complete: function () {
+            submitButton.prop("disabled", false).text(originalButtonText);
+          }
+        });
+      });
+    });
+  </script>
+</head>
 <body>
   <h2>Flight Search Results</h2>
 
   <% if (flights && flights.length > 0) { %>
-    <table>
-      <thead>
-        <tr>
-          <th>Flight Number</th>
-          <th>Departure</th>
-          <th>Destination</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Seats</th>
-          <th>Book</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% for (const flight of flights) { %>
-          <tr>
-            <td><%= flight.flightNumber %></td>
-            <td><%= flight.departure %></td>
-            <td><%= flight.destination %></td>
-            <td><%= flight.date.toDateString() %></td>
-            <td><%= flight.time %></td>
-            <td><%= flight.seats %></td>
-            <td>
-              <form action="/bookings/add" method="POST">
-                <input type="hidden" name="flightNumber" value="<%= flight.flightNumber %>">
-                <% if (flight.booked) { %> <!-- Add this conditional statement -->
-                  <button type="button" disabled>Booked</button>
-                <% } else { %>
-                  <button type="submit" class="btn btn-primary">Book</button>
-                <% } %>
-              </form>
-            </td>
-          </tr>
-        <% } %>
-      </tbody>
-    </table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Flight Number</th>
+        <th>Departure</th>
+        <th>Destination</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Seats</th>
+        <th>Book</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (const flight of flights) { %>
+      <tr>
+        <td><%= flight.flightNumber %></td>
+        <td><%= flight.departure %></td>
+        <td><%= flight.destination %></td>
+        <td><%= flight.date.toDateString() %></td>
+        <td><%= flight.time %></td>
+        <td><%= flight.seats %></td>
+        <td>
+          <form class="book-flight-form" action="/bookings/add" method="POST">
+            <input type="hidden" name="flightNumber" value="<%= flight.flightNumber %>" />
+            <% if (flight.booked) { %>
+              <button type="button" disabled>Booked</button>
+            <% } else { %>
+              <button type="submit" class="btn btn-primary book-flight-button">Book</button>
+            <% } %>
+          </form>
+        </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
   <% } else { %>
-    <p>No flights available for the selected criteria.</p>
+  <p>No flights available for the selected criteria.</p>
   <% } %>
 
-  <a href="/profile/mybookings">My BOOKINGS</a>
-  
-
+  <a href="/profile/mybookings" class="link">My BOOKINGS</a>
 </body>
-
 </html>
