@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm i",
     "start": "nodemon app.js"
   },
   "author": "Balaji",
@@ -18,5 +19,8 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "mongoose": "^7.3.2"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
   }
 }
