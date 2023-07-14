@@ -55,8 +55,8 @@ router.post("/search", async (req, res) => {
 
     // Query flights based on the departure, destination, and date
     const flights = await Flight.find({
-      departure: { $regex: departure, $options: "i" },
-      destination: { $regex: destination, $options: "i" },
+      departure: { $regex: new RegExp(departure, "i") },
+      destination: { $regex: new RegExp(destination, "i") },
       date: { $gte: selectedDate },
     });
 
