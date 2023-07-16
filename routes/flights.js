@@ -18,7 +18,9 @@ router.post("/add", async (req, res) => {
     });
 
     await newFlight.save();
-    res.send("Flight added successfully!");
+    res.send(
+      "<script>alert('Flight added successfully!'); window.history.back();</script>"
+    );
   } catch (error) {
     res.status(500).send("An error occurred while adding the flight.");
   }

@@ -115,8 +115,6 @@ a {
 .image-1 {
   width: 20px;
   height: 20px;
-  /* border-top: 4px solid orange;
-    border-bottom: 4px solid orange; */
 }
 .logincon {
   display: flex;
@@ -206,9 +204,6 @@ td {
   align-items: flex-start;
 }
 
-/* style.css */
-
-/* Add styles for the loading screen and success message */
 .loading {
   display: none;
   position: fixed;
@@ -237,7 +232,9 @@ td {
   align-items: center;
 }
 
-/* Add a class to hide the success message by default */
 .hidden {
   display: none;
+}
+.para {
+  margin-top: 4%;
 }

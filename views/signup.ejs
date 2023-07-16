@@ -11,27 +11,32 @@
     <div class="logincon">
       <h1>Sign Up</h1>
       <form action="/signup" method="POST" onsubmit="return validateForm()">
-        <div class="form-group2">
-          <input
-            type="text"
-            name="username"
-            class="form-control"
-            placeholder="Username"
-            required
-          />
-          <small id="usernameError" class="form-text text-danger"></small>
-          <input
-            type="password"
-            name="password"
-            class="form-control"
-            placeholder="Password"
-            required
-          />
-          <small id="passwordError" class="form-text text-danger"></small>
-          <button type="submit" class="btn-1">Sign Up</button>
+        <!-- Add the isAdmin checkbox to the Sign Up form -->
+<div class="form-group2">
+  <input
+    type="text"
+    name="username"
+    class="form-control"
+    placeholder="Username"
+    required
+  />
+  <small id="usernameError" class="form-text text-danger"></small>
+  <input
+    type="password"
+    name="password"
+    class="form-control"
+    placeholder="Password"
+    required
+  />
+  <small id="passwordError" class="form-text text-danger"></small>
+  <label for="isAdmin">Register as Admin:</label>
+  <input type="checkbox" name="isAdmin" id="isAdmin" />
+  <button type="submit" class="btn-1">Sign Up</button>
+</div>
+
         </div>
       </form>
-      <p>Already have an account? <a href="/login" class="link">Login</a></p>
+      <p class="para">Already have an account? <a href="/login" class="link">Login</a></p>
     </div>
 
     <script>
